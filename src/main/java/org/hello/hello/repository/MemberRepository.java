@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 //이것도 해줘야함
-@Repository
+
 public interface MemberRepository {
     Member save(Member member);
     // null 때문에

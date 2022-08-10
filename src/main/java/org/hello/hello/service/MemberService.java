@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Optional;
 
 // 이거해줘야 Controller에서 컨테이녀 언결 할 수 있음
-@Service
+
 // 커맨드 쉬프트 T : 테스트 코드 작성
 public class MemberService {
     // 바꾸자!
     private final MemberRepository memberRepository;
 
     // DI : Dependency Injection
-    @Autowired
+
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

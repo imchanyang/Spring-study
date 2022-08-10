@@ -1,21 +1,34 @@
-//package org.battles.battles;
-//
-//import org.battles.battles.repository.MemberRepository;
-//import org.battles.battles.repository.MemoryMemberRepository;
-//import org.battles.battles.service.MemberService;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//
-//@Configuration
-//public class SpringConfig {
-//    //수동으로 스프링 빈에 등록
-//    @Bean
-//    public MemberService memberService() {
-//        return new MemberService(memberRepository());
-//    }
-//
-//    @Bean
-//    public MemberRepository memberRepository() {
-//        return new MemoryMemberRepository();
-//    }
-//}
+package org.hello.hello;
+
+import org.hello.hello.repository.JdbcMemberRepository;
+import org.hello.hello.repository.MemberRepository;
+import org.hello.hello.repository.MemoryMemberRepository;
+import org.hello.hello.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+
+@Configuration
+public class SpringConfig {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public SpringConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    //수동으로 스프링 빈에 등록
+    @Bean
+    public MemberService memberService() {
+        return new MemberService(memberRepository());
+    }
+
+    @Bean
+    public MemberRepository memberRepository() {
+     //   return new MemoryMemberRepository();
+        return new JdbcMemberRepository(dataSource);
+    }
+}
