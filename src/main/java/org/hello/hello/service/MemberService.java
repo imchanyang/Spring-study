@@ -5,12 +5,17 @@ import org.hello.hello.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 // 이거해줘야 Controller에서 컨테이녀 언결 할 수 있음
 
 // 커맨드 쉬프트 T : 테스트 코드 작성
+
+// JPA쓰려면 필요
+// 데이터를 저장 혹은 변경할 때 필요
+@Transactional
 public class MemberService {
     // 바꾸자!
     private final MemberRepository memberRepository;
